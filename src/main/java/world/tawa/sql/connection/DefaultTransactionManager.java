@@ -3,7 +3,6 @@ package world.tawa.tawajdbc.connection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import world.tawa.tawajdbc.Config;
-import world.tawa.tawajdbc.TawaJdbcException;
 import world.tawa.tawajdbc.util.JdbcUtil;
 
 import javax.sql.DataSource;
@@ -23,7 +22,7 @@ public class DefaultTransactionManager implements TransactionManager {
         if (dataSourceIndex == null) dataSourceIndex = Config.DEFAULT_DATASOURCE_INDEX;
         DataSource dataSource = Config.getDataSource().get(dataSourceIndex);
         if (dataSource == null) {
-            throw new TawaJdbcException("DataSource not found with index " + dataSourceIndex);
+            throw new world.tawa.tawajdbc.TawaSQLException("DataSource not found with index " + dataSourceIndex);
         }
         return dataSource.getConnection();
     }

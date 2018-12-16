@@ -1,7 +1,5 @@
 package world.tawa.tawajdbc.connection;
 
-import world.tawa.tawajdbc.TawaJdbcException;
-
 import java.sql.Connection;
 
 /**
@@ -25,7 +23,7 @@ public class ConnectionManager {
      */
     public static Connection getConnection(String dataSourceIndex){
         if(transactionManager == null){
-            throw new TawaJdbcException("transactionManager is null");
+            throw new world.tawa.tawajdbc.TawaSQLException("transactionManager is null");
         }
         return transactionManager.getConnection(dataSourceIndex);
     }
